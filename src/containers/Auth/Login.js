@@ -6,6 +6,8 @@ import * as actions from "../../store/actions";
 
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
+import userService from '../../services/userService';
+
 
 
 class Login extends Component {
@@ -15,7 +17,8 @@ class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            isShowPassword: false
+            isShowPassword: false,
+            errMessage: ''
         }
     }
 
@@ -27,8 +30,34 @@ class Login extends Component {
         });
     }
 
-    handleLogin = () => {
-        console.log(this.state);
+    handleLogin = async () => {
+        let copyState = {...this.state};
+        copyState.errMessage = '';
+        this.setState({
+            ...copyState
+        });
+        await userService.handleLoginApi(this.state.username, this.state.password)
+            .then(res => {
+                console.log(res);
+                copyState.errMessage = res.data.message;
+                this.setState({
+                    ...copyState
+                });
+                if(res && res.data.errCode === 0){
+                    this.props.userLoginSuccess(res.data.user);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                if(err.response){
+                    if(err.response.data){
+                        copyState.errMessage = err.response.data.message;
+                    }
+                }
+                this.setState({
+                    ...copyState
+                });
+            })
     }
 
     handleShowHidePassword = () => {
@@ -71,6 +100,9 @@ class Login extends Component {
                             </div>
                         </div>
                         <div className="col-12">
+                            <span style={{color: 'red'}}>{this.state.errMessage}</span>
+                        </div>
+                        <div className="col-12">
                             <button className="btn-login" onClick={() => this.handleLogin()}>Login</button>
                         </div>
                         <div className="col-12 text-center">
@@ -105,6 +137,7 @@ const mapDispatchToProps = dispatch => {
         navigate: (path) => dispatch(push(path)),
         adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
         adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfo) => dispatch(actions.userLoginSuccess(userInfo)),
     };
 };
 
