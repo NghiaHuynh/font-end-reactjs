@@ -12,7 +12,7 @@ import { path } from '../utils'
 
 import Home from '../routes/Home';
 import Login from './Auth/Login';
-import Header from './Header/Header';
+
 import System from '../routes/System';
 
 import { CustomToastCloseButton } from '../components/CustomToast';
@@ -45,7 +45,7 @@ class App extends Component {
                 <Router history={history}>{/*moi lan refesh web site thi da cache du lieu lai tu phia font-end*/}
                     <div className="main-container">
                         <ConfirmModal />
-                        {this.props.isLoggedIn && <Header />}
+                        
                         <span className="content-container">
                             <Switch>
                                 <Route path={path.HOME} exact component={(Home)} />

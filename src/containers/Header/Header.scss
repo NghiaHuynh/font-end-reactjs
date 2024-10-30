@@ -3,11 +3,51 @@
 .header-container {
     z-index: 99;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; // chia thanh 2 phan tu dau va cuoi 
     background-color: $colormain;
     color: $common-text-color;
     height: 40px;
     position: relative;
+
+    .languages {
+        .language-vi {
+            line-height: 40px;
+            height: 40px;
+            padding: 0 5px;
+            display: inline-block;
+            cursor: pointer;
+            background-color: $colormain;
+            color: $common-text-color;
+            border: none;
+            opacity: 0.5;
+            &.active {
+                opacity: 1;
+                color: greenyellow;
+            }
+            &:hover {
+                background-color: darken($colormain, 5);
+            }
+        }
+
+        .language-en {
+            line-height: 40px;
+            height: 40px;
+            padding: 0 5px;
+            display: inline-block;
+            cursor: pointer;
+            background-color: $colormain;
+            color: $common-text-color;
+            border: none;
+            opacity: 0.5;
+            &.active {
+                opacity: 1;
+                color: greenyellow;
+            }
+            &:hover {
+                background-color: darken($colormain, 5);
+            }
+        }   
+    }
     .btn-logout {
         color: $common-text-color;
         line-height: 40px;
