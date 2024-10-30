@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { emitterUtils } from '../../utils/emitter';
-class ModalUser extends Component {
+import _ from 'lodash'; //dung cho viec check object rong hay khong
+
+class ModalEditUser extends Component {
 
 
 
     constructor(props) {
         super(props);
         this.state = {
+            id: '',
             email: '',
             password: '',
             firstName: '',
@@ -18,30 +20,35 @@ class ModalUser extends Component {
             phonenumber: '',
             roleId: ''
         }
-        this.listenToEmitter();
+        
     }
 
-    listenToEmitter = () => {
-        emitterUtils.on('EVENT_CLEAR_MODAL_DATA', () => {
-            this.setState({
-                email: '',
-                password: '',
-                firstName: '',
-                lastName: '',
-                address: '',
-                phonenumber: '',
-                roleId: ''
-            })
-        })
-    }
 
     componentDidMount() {
+        let { currentUser } = this.props;
+        if (currentUser && !_.isEmpty(currentUser)) {
+            this.setState({
+                id: currentUser.id,
+                email: currentUser.email,
+                password: 'HARDCODE',
+                firstName: currentUser.firstName,
+                lastName: currentUser.lastName,
+                address: currentUser.address,
+                phonenumber: currentUser.phonenumber,
+                roleId: currentUser.roleId
+            })
+        }
 
     }
 
     toggle = () => {
         //close modal goi tu thang con len thang cha
         this.props.toggleParentModal();
+    }
+
+    toggleModalEdit = () => {
+        //close modal goi tu thang con len thang cha
+        this.props.toggleParentModalEdit();
     }
 
     handleOnChangeInput = (event, id) => {
@@ -54,7 +61,7 @@ class ModalUser extends Component {
 
     checkValidateInput = () => {
         let isValid = true;
-        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address'];
+        let arrInput = ['firstName', 'lastName', 'address'];
         for (let i = 0; i < arrInput.length; i++) {
             if (!this.state[arrInput[i]]) {
                 isValid = false;
@@ -65,34 +72,36 @@ class ModalUser extends Component {
         return isValid;
     }
 
-    handleAddNewUser = () => {
+    handleSaveUser = () => {
         let isValid = this.checkValidateInput();
         if (isValid === true) {
-            //call api
-            this.props.createParentNewUser(this.state);
-            this.toggle();
+            //call api edit user
+            this.props.editParentUser(this.state);
+            this.toggleModalEdit();
         }
     }
 
 
     render() {
         return (
-            <Modal isOpen={this.props.isOpen}
+            <Modal isOpen={this.props.isOpenEdit}
                 size="lg"
                 className='modal-user-container'
-                centered={true} toggle={() => (this.toggle())}>
-                <ModalHeader toggle={() => (this.toggle())}>Create New User</ModalHeader>
+                centered={true} toggle={() => (this.toggleModalEdit())}>
+                <ModalHeader toggle={() => (this.toggleModalEdit())}>Edit New User</ModalHeader>
                 <ModalBody>
                     <div className='container'>
                         <div className="input-group mb-3">
                             <input type="text"
                                 onChange={(event) => this.handleOnChangeInput(event, 'email')}
                                 value={this.state.email}
+                                disabled
                              className="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" />
                             {/* <span class="input-group-text" id="basic-addon1">@example.com</span> */}
                             <input type="Password"
                                 onChange={(event) => this.handleOnChangeInput(event, 'password')}
                                 value={this.state.password}
+                                disabled
                              className="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" />
                         </div>
                         <div className="input-group mb-3">
@@ -125,11 +134,11 @@ class ModalUser extends Component {
                 </ModalBody>
                 <ModalFooter>
                     <Button type="button" className='px-3' color="primary" 
-                    onClick={() => (this.handleAddNewUser())}>
-                        Add new
+                    onClick={() => (this.handleSaveUser())}>
+                        Save changes
                     </Button>
                     <Button type="button" className='px-3' color="secondary" 
-                    onClick={() => (this.toggle())}>
+                    onClick={() => (this.toggleModalEdit())}>
                         Close
                     </Button>
                 </ModalFooter>
@@ -149,4 +158,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalUser);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalEditUser);

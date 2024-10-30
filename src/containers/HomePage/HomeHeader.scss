@@ -1,0 +1,176 @@
+.home-header-container {
+    height: 60px;
+    // border: 1px solid red;
+    padding: 0 15px;
+    .home-header-content {
+        height: 100%;
+        width: 100%;
+        display: flex;// nhung thang con tren hang ngang
+    }
+    .left-content {
+        width: 25%;
+        // border: 1px solid red;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        .header-logo {
+            width: 100%;
+            height: 100%;
+            // background: url("../../assets/images/logo.svg") center center no-repeat;
+            background-size: 50%;
+            cursor: pointer;
+        }
+        i {
+            font-size: 25px;
+            color: grey;
+            cursor: pointer;
+        }
+    }
+    .center-content {
+        width: 50%;
+        // border: 1px solid red;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .child-content {
+            .subs-title {
+                font-size: 12px;
+                font-weight: 400;
+            }
+        }
+    }
+    .right-content {
+        width: 25%;
+        // border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .support {
+            font-size: 14px;
+            font-weight: 400;
+            cursor: pointer;
+            padding-right: 50px;
+
+            i {
+                margin-right: 5px;
+            }
+        }
+        .language-vi {
+            cursor: pointer;
+            &.active {// và class active
+                color: blue;
+            }
+        }
+        .language-en {
+            margin: 0 10px;
+            cursor: pointer;
+        }
+    }
+}
+
+.home-header-banner {
+    width: 100%;
+    height: 450px;
+    background: url("../../assets/images/header-background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+
+    .content-up {
+        height: 50%;
+        // border: 1px solid red;
+        padding-top: 15px;
+
+        .title1 {
+            color: white;
+            font-size: 30px;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 2px #333;
+        }
+        .title2 {
+            color: white;
+            font-size: 30px;
+            font-weight: 600;
+            text-shadow: 2px 2px 2px #333;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .search {
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid red;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            width: 400px;
+            margin: 0 auto;
+            padding: 10px;
+            border-radius: 30px;
+            background: #f7d809;
+            i{
+                margin: 0 5px
+            }
+            input {
+                height: 30px;
+                width: 650px;
+                background: transparent;
+                border: none;
+                outline: none;
+            }
+        }
+    }
+    .content-down {
+        height: 50%;
+        // border: 1px solid red;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1));
+        .options {
+            gap: 30px;
+            justify-content: space-between;
+            text-align: center;
+            display: flex;
+            .option-child {
+                width: 125px;
+                // border: 1px solid red;
+                .icon-child {
+                    margin: 0 auto;
+                    height: 40px;
+                    width: 40px;
+                    padding: 10px;
+                    border-radius: 50%;
+                    text-align: center;
+                    background: white;
+
+                    i {
+                        font-size: 20px;
+                        color: #49bce2;
+                    }
+                }
+                .text-child {
+                    cursor: pointer;
+                    font-size: 17px;
+                    font-weight: 500;
+
+                    &:hover {
+                        color: #49bce2;
+                    }
+
+                }
+
+            }
+        }
+    }
+
+    
+}
