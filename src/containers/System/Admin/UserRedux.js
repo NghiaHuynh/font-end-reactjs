@@ -7,6 +7,8 @@ import './UserRedux.scss';
 import { URL as url } from 'url';
 import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
+import TableManageUser from './TableManageUser';
+import { fetchAllUsersStart } from '../../../store/actions';
 
 class UserRedux extends Component {
 
@@ -62,6 +64,21 @@ class UserRedux extends Component {
                 role: this.props.roleRedux && this.props.roleRedux.length > 0 ? this.props.roleRedux[0].key : ''
             })
         }
+
+        if (prevProps.allUsersRedux !== this.props.allUsersRedux) {
+            this.setState({
+                email: '',
+                password: '',
+                firstName: '',
+                lastName: '',
+                phoneNumber: '',
+                address: '',
+                gender: '',
+                position: '',
+                role: '',
+                image: '',
+            })
+        }
     }
 
     handleOnchangeImage = (event) => {
@@ -103,6 +120,9 @@ class UserRedux extends Component {
             role: this.state.role
             
         })
+        // setTimeout(() => {
+        //     this.props.fetchAllUsersStartRedux();
+        // }, 1000);
         // console.log('save new user', this.state);
     }
 
@@ -256,10 +276,15 @@ class UserRedux extends Component {
                                         onClick={() => this.handleSaveNewUser()}><FormattedMessage id="manage-user.save" /></button>
                                 </div>
                             </form>
+                        
+                        <div className="col-12 mt-5">
+                            <TableManageUser/>
+                        </div>
                         </div>
                     </div>
                 </div>
-
+                
+                
                 {this.state.isOpen === true &&
                     <Lightbox
                         mainSrc={this.state.previewImgURL}
@@ -278,7 +303,8 @@ const mapStateToProps = state => {
         genderRedux: state.admin.genders,
         isLoadingGenderRedux: state.admin.isLoadingGender,
         positionRedux: state.admin.positions,
-        roleRedux: state.admin.roles
+        roleRedux: state.admin.roles,
+        allUsersRedux: state.admin.allUsers
     };
 };
 
@@ -287,7 +313,8 @@ const mapDispatchToProps = dispatch => {
         getGenderStart: () => dispatch(actions.fetchGenderStart()),
         getPositionStart: () => dispatch(actions.fetchPositionStart()),
         getRoleStart: () => dispatch(actions.fetchRoleStart()),
-        createNewUserStart: (data) => dispatch(actions.createNewUserStart(data))
+        createNewUserStart: (data) => dispatch(actions.createNewUserStart(data)),
+        fetchAllUsersStartRedux: () => dispatch(fetchAllUsersStart()),
     };
 };
 

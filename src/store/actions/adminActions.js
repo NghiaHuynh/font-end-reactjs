@@ -1,5 +1,6 @@
 import actionTypes from './actionTypes';
 import userService from '../../services/userService';
+import { toast } from 'react-toastify';
 
 export const adminLoginSuccess = (adminInfo) => ({
     type: actionTypes.ADMIN_LOGIN_SUCCESS,
@@ -95,20 +96,99 @@ export const createNewUserStart = (data) => {
         try{
             dispatch({type: actionTypes.CREATE_USER_START});
             let res = await userService.createNewUserApi(data);
-            // console.log('check create user start:', res);
+            console.log('check create user start:', res);
+            
             if(res && res.data.errCode === 0){
+                toast.success('Create new user succeed!');
                 dispatch({
                     type: actionTypes.CREATE_USER_SUCCESS,
                 })
+                dispatch(fetchAllUsersStart());
             }else{
+                toast.error(res.data.message);
                 dispatch({
                     type: actionTypes.CREATE_USER_FAIL,
                 })
             }
         }catch(error){
+            toast.error('Create new user failed!');
             dispatch({
                 type: actionTypes.CREATE_USER_FAIL,
             })
         }
     }
+}
+
+export const fetchAllUsersStart = () => {
+    return async (dispatch, getState) => {
+        try{
+            dispatch({type: actionTypes.FETCH_ALL_USER_START});
+            let res = await userService.getAllUsersApi('ALL');
+            // console.log('check get all user start:', res);
+            if(res && res.data.errCode === 0){
+                dispatch({
+                    type: actionTypes.FETCH_ALL_USER_SUCCESS,
+                    arrUsers: res.data.users.reverse()//lay nguoc lai moi them vao thi vao dau danh sach
+                })
+            }else{
+                dispatch({
+                    type: actionTypes.FETCH_ALL_USER_FAIL,
+                })
+            }
+        }catch(error){
+            dispatch({
+                type: actionTypes.FETCH_ALL_USER_FAIL,
+            })
+        }
+    }
+}
+
+export const editUserStart = (data) => {
+    return async (dispatch, getState) => {
+        try{
+            dispatch({type: actionTypes.EDIT_USER_START});
+            let res = await userService.editUserApi(data);
+            // console.log('check edit user start:', res);
+            if(res && res.data.errCode === 0){
+                dispatch({
+                    type: actionTypes.EDIT_USER_SUCCESS,
+                })
+            }else{
+                dispatch({
+                    type: actionTypes.EDIT_USER_FAIL,
+                })
+            }
+        }catch(error){
+            dispatch({
+                type: actionTypes.EDIT_USER_FAIL,
+            })
+        }
+    }    
+}
+
+export const deleteUserStart = (inputId) => {
+    return async (dispatch, getState) => {
+        try{
+            dispatch({type: actionTypes.DELETE_USER_START});
+            let res = await userService.deleteUserApi(inputId);
+            
+            if(res && res.data.errCode === 0){
+                toast.success('Delete user succeed!');
+                dispatch({
+                    type: actionTypes.DELETE_USER_SUCCESS,
+                })
+                dispatch(fetchAllUsersStart());
+            }else{
+                toast.error('Delete user failed!');
+                dispatch({
+                    type: actionTypes.DELETE_USER_FAIL,
+                })
+            }
+        }catch(error){
+            toast.error('Delete user failed!');
+            dispatch({
+                type: actionTypes.DELETE_USER_FAIL,
+            })
+        }
+    }    
 }
