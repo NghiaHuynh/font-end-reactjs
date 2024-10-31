@@ -10,7 +10,8 @@
         "check-health":"Check Health",
         "support":"Support",
         "about-us":"About Us",
-        "contact-us":"Contact Us"
+        "contact-us":"Contact Us",
+        "welcome": "Welcome"
     },
     "banner": {
         "title1": "MEDICAL BACKGROUND",
@@ -61,6 +62,19 @@
             "system-parameter": {
                 "header": "System-parameter"
             }
+        },
+        "admin": {
+            "manage-user": "Manage users system",
+            "manage-doctor": "Manage doctors",
+            "manage-admin": "Manage admins",
+            "crud": "CRUD User",
+            "crud-redux": "CRUD Redux",
+            "clinic": "Clinics",
+            "manage-clinic": "Manage clinics",
+            "specialty": "Specialty",
+            "manage-specialty": "Manage specialty",
+            "handbook": "Handbook",
+            "manage-handbook": "Manage handbook"
         }
     },
     "system": {
@@ -140,5 +154,19 @@
             "remove-assign-fail": "Fail to unassign service package to customer",
             "sure-delete-assign": "Are you sure to unassign service package to customer?"
         }
+    },
+    "manage-user": {
+        "add": "Add new user",
+        "email": "Email",
+        "password": "Password",
+        "first-name": "First name",
+        "last-name": "Last name",
+        "phone-number": "Phone number",
+        "address": "Address",
+        "gender": "Gender",
+        "position": "Position",
+        "role": "Role",
+        "save": "Save user",
+        "image": "Avatar"
     }
 }

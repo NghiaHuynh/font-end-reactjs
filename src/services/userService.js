@@ -20,10 +20,15 @@ const editUserApi = (data) => {
     return axios.put('/api/edit-user', data);
 }
 
+const getAllCodeApi = (inputType) => {
+    return axios.get(`/api/all-code?type=${inputType}`);
+}
+
 export default {
     handleLoginApi: handleLoginApi,
     getAllUsersApi: getAllUsersApi,
     createNewUserApi: createNewUserApi,
     deleteUserApi: deleteUserApi,
-    editUserApi: editUserApi
+    editUserApi: editUserApi,
+    getAllCodeApi: getAllCodeApi
 }

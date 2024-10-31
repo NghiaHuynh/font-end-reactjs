@@ -10,7 +10,8 @@
         "check-health":"Khám sức khỏe tổng quát",
         "support":"Hỗ trợ",
         "about-us":"Giới thiệu",
-        "contact-us":"Liên hệ"
+        "contact-us":"Liên hệ",
+        "welcome": "Xin chào"
     },
     "banner": {
         "title1": "NỀN TẢN Y TẾ",
@@ -61,6 +62,19 @@
             "system-parameter": {
                 "header": "Tham số hệ thống"
             }
+        },
+        "admin": {
+            "manage-user": "Quản lý người dùng",
+            "manage-doctor": "Quản lý bác sĩ",
+            "manage-admin": "Quản lý quản trị viên",
+            "crud": "CRUD User",
+            "crud-redux": "CRUD Redux",
+            "clinic": "Phòng khám",
+            "manage-clinic": "Quản lý phòng khám",
+            "specialty": "Chuyên Khoa",
+            "manage-specialty": "Quản lý chuyên khoa",
+            "handbook": "Cẩm nang",
+            "manage-handbook": "Quản lý cẩm nang"
         }
     },
     "system": {
@@ -140,5 +154,19 @@
             "remove-assign-fail": "Bỏ gán gói dịch vụ cho khách hàng thất bại",
             "sure-delete-assign": "Bạn có chắc chắn muốn bỏ gán gói dịch vụ cho khách hàng?"
         }
+    },
+    "manage-user": {
+        "add": "Thêm người dùng",
+        "email": "Email",
+        "password": "Mật khẩu",
+        "first-name": "Tên",
+        "last-name": "Họ",
+        "phone-number": "Số điện thoại",
+        "address": "Địa chỉ",
+        "gender": "Giới tính",
+        "position": "Chức danh",
+        "role": "Vai trò",
+        "save": "Lưu User",
+        "image": "Hình ảnh"
     }
 }
