@@ -148,17 +148,21 @@ export const editUserStart = (data) => {
         try{
             dispatch({type: actionTypes.EDIT_USER_START});
             let res = await userService.editUserApi(data);
-            // console.log('check edit user start:', res);
+            console.log('check edit user start:', res);
             if(res && res.data.errCode === 0){
+                toast.success('Edit user succeed!');
                 dispatch({
                     type: actionTypes.EDIT_USER_SUCCESS,
                 })
+                dispatch(fetchAllUsersStart());
             }else{
+                toast.error('Edit user failed!');
                 dispatch({
                     type: actionTypes.EDIT_USER_FAIL,
                 })
             }
         }catch(error){
+            toast.error('Edit user failed!');
             dispatch({
                 type: actionTypes.EDIT_USER_FAIL,
             })

@@ -167,6 +167,7 @@
         "position": "Position",
         "role": "Role",
         "save": "Save user",
+        "edit": "Edit user",
         "image": "Avatar"
     }
 }
