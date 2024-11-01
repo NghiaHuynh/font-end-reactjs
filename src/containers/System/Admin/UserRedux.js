@@ -214,14 +214,16 @@ class UserRedux extends Component {
                                     <input type="email"
                                         value={email}
                                         onChange={(event) => this.handleOnChangeInput(event, 'email')}
-                                        className="form-control" id="inputEmail4" />
+                                        className="form-control" id="inputEmail4" 
+                                        disabled={this.state.action === CRUD_ACTION.EDIT ? true : false} />
                                 </div>
                                 <div className="col-md-3">
                                     <label className="form-label"><FormattedMessage id="manage-user.password" /></label>
                                     <input type="password"
                                         value={password}
                                         onChange={(event) => this.handleOnChangeInput(event, 'password')}
-                                        className="form-control" id="inputPassword4" />
+                                        className="form-control" id="inputPassword4" 
+                                        disabled={this.state.action === CRUD_ACTION.EDIT ? true : false} />
                                 </div>
                                 <div className="col-md-3">
                                     <label className="form-label"><FormattedMessage id="manage-user.first-name" /></label>
