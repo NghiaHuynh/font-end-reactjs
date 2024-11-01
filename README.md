@@ -3,7 +3,7 @@
 ![Uploading Screen Shot 2024-11-01 at 12.18.08.<img width="1166" alt="Screen Shot 2024-11-01 at 12 18 35" src="https://github.com/user-attachments/assets/02b0fd5c-524b-46aa-bf59-e05d40ff5733"><<img width="1161" alt="Screen Shot 2024-11-01 at 12 19 19" src="https://github.com/user-attachments/assets/a3092c98-4d47-4f7f-b86b-5aa00cf3c65f">
 img width="1162" alt="Screen Shot 2024-11-01 at 12 19 04" src="https://github.com/user-attachments/assets/2c15008b-3983-4b08-ab95-dc6ac85b665a">
 
-png…]()<img width="1153" alt="Screen Shot 2024-11-01 at 12 18 08" src="https://github.com/user-attachments/assets/d780d4db-0003-4484-ae9f-d8f0024bb9f9">
+png…]()
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
