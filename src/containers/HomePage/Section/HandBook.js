@@ -1,46 +1,43 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './Specialty.scss';
 import Slider from 'react-slick';
 
 
-class Specialty extends Component {
-
-
+class HandBook extends Component {
 
     render() {
         
         return (
-            <div className='section-share section-specialty'>
+            <div className='section-share section-handBook'>
                 <div className='section-content'>
                     <div className='section-header'>
-                        <span className='section-title'>chuyên khoa</span>
+                        <span className='section-title'>Cam nang y tê</span>
                         <button className='section-btn'>xem thêm</button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
                             <div className='section-customize'>
-                                <div className='section-img section-specialty'></div>
+                                <div className='section-img section-handBook'></div>
                                 <div>co-xuong-khop</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='section-img section-specialty'></div>
+                                <div className='section-img section-handBook'></div>
                                 <div>co-xuong-khop</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='section-img section-specialty'></div>
+                                <div className='section-img section-handBook'></div>
                                 <div>co-xuong-khop</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='section-img section-specialty'></div>
+                                <div className='section-img section-handBook'></div>
                                 <div>co-xuong-khop</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='section-img section-specialty'></div>
+                                <div className='section-img section-handBook'></div>
                                 <div>co-xuong-khop</div>
                             </div>
                             <div className='section-customize'>
-                                <div className='section-img section-specialty'></div>
+                                <div className='section-img section-handBook'></div>
                                 <div>co-xuong-khop</div>
                             </div>
                         </Slider>
@@ -68,4 +65,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Specialty);
+export default connect(mapStateToProps, mapDispatchToProps)(HandBook);

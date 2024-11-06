@@ -1,0 +1,143 @@
+//reset slick
+.slick-prev::before,
+.slick-next::before {
+    font-family: FontAwesome !important;
+    // content: '\f060' !important;
+    color: red !important;
+
+}
+
+.slick-prev {
+    left: -10px !important;
+    border: 1px solid red !important;
+    z-index: 1 !important;
+    // background-color: red !important;
+    width: 44px !important;
+    height: 48px !important;
+    background: #fff !important;
+    border: 2px solid #d7d7d7 !important;
+
+    &:hover {
+        background: #d7d7d7 !important;
+    }
+}
+
+.slick-next {
+    right: -10px !important;
+    border: 1px solid red !important;
+    background-color: red !important;
+    width: 44px !important;
+    height: 48px !important;
+    background: #fff !important;
+    border: 2px solid #d7d7d7 !important;
+
+    &:hover {
+        background: #d7d7d7 !important;
+    }
+}
+
+.section-share {
+    &.section-specialty {
+        background: #f5f5f5;
+        border: none;
+    }
+
+    .section-body {
+
+        .section-customize {
+            .section-img {
+
+                &.section-specialty {
+                    background-image: url("../../assets/specialty/co-xuong-khop.png");
+
+                }
+
+                &.section-medical-facility {
+                    background-image: url("../../assets/medical-facility/logo-y-duoc.jpg");
+
+                }
+
+                &.section-outstanding-doctor {
+                    background-image: url("../../assets/outstanding-doctor/bs-tri.jpg");
+                    width: 120px;
+                    height: 120px;
+                    margin: 0 auto; //canh giua
+                    border-radius: 50%;
+                }
+
+                &.section-handBook {
+                    background-image: url("../../assets/handbook/handbook.png");
+                }
+
+                background-color: #eee;
+                width: 278px;
+                height: 150px;
+                background-position: center center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                // object-fit: contain;
+            }
+        }
+
+    }
+
+}
+
+.section-share {
+    height: 330px;
+    background-color: #f5f5f5;
+    border: none;
+    width: 100%;
+
+
+    .section-content {
+        margin: 0 100px;
+        display: flex;
+        flex-direction: column;
+
+
+        .section-header {
+            height: 60px;
+            margin-bottom: 30px;
+            padding-top: 30px;
+
+            .section-title {
+                font-size: 22px;
+                font-weight: 600;
+            }
+
+            .section-btn {
+                float: right;
+                padding: 10px 5px;
+                border: none;
+                outline: none;
+                background: #ebebeb;
+                text-transform: uppercase;
+                color: black;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: yellow;
+                    color: #fff;
+                }
+            }
+        }
+
+
+    }
+
+}
+
+.section-outstanding-doctor {
+    .section-customize {
+        padding: 5px;
+        padding-left: 5px;
+
+        .customize-border {
+            border: 1px solid orange;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    }
+}
