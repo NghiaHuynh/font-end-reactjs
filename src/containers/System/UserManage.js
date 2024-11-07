@@ -108,7 +108,7 @@ class UserManage extends Component {
     // Run when component is unmounted /die
 
     render() {
-        console.log('check user manage: ', this.state);
+        // console.log('check user manage: ', this.state);
         let arrUsers = this.state.arrUsers;
         return (
             <div className="users-container">

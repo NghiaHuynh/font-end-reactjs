@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import { languages, CRUD_ACTION } from '../../../utils';
+import { languages, CRUD_ACTION, CommonUtils } from '../../../utils';
 import * as actions from "../../../store/actions";
 import './UserRedux.scss';
 import { URL as url } from 'url';
@@ -9,6 +9,7 @@ import Lightbox from 'react-image-lightbox';
 import 'react-image-lightbox/style.css';
 import TableManageUser from './TableManageUser';
 import { fetchAllUsersStart } from '../../../store/actions';
+import { Buffer } from 'buffer';
 
 class UserRedux extends Component {
 
@@ -31,7 +32,7 @@ class UserRedux extends Component {
             position: '',
             role: '',
             image: '',
-            userEditId:'',
+            userEditId: '',
 
             action: CRUD_ACTION.CREATE
         };
@@ -85,19 +86,21 @@ class UserRedux extends Component {
                 role: arrRole && arrRole.length > 0 ? arrRole[0].key : '',
                 image: '',
 
+                previewImgURL: '',
                 action: CRUD_ACTION.CREATE
             })
         }
     }
 
-    handleOnchangeImage = (event) => {
+    handleOnchangeImage = async (event) => {
         let data = event.target.files;
         let file = data[0];
         if (file) {
+            let base64 = await CommonUtils.getBase64(file);
             let objectUrl = URL.createObjectURL(file);
             this.setState({
                 previewImgURL: objectUrl,
-                image: file
+                image: base64
             })
         }
     }
@@ -128,10 +131,11 @@ class UserRedux extends Component {
                 phoneNumber: this.state.phoneNumber,
                 gender: this.state.gender,
                 position: this.state.position,
-                role: this.state.role
+                role: this.state.role,
+                image: this.state.image
 
             })
-        } 
+        }
         else if (action === CRUD_ACTION.EDIT) {
             //fire redux event : actions
             this.props.editUserStartRedux({
@@ -175,6 +179,16 @@ class UserRedux extends Component {
     }
 
     handleFillFormEditUser = (user) => {
+        let imgeBase64 = '';
+        if (user.image) {
+            const buffer = Buffer.from(user.image, 'base64');
+            imgeBase64 = `${buffer.toString('binary')}`;
+            
+            this.setState({
+                previewImgURL: imgeBase64
+            })
+        }
+
         this.setState({
             email: user.email,
             password: "HARD_CODE",
@@ -186,7 +200,7 @@ class UserRedux extends Component {
             position: user.position,
             role: user.role,
             action: CRUD_ACTION.EDIT,
-            userEditId:user.id
+            userEditId: user.id
         })
     }
 
@@ -214,7 +228,7 @@ class UserRedux extends Component {
                                     <input type="email"
                                         value={email}
                                         onChange={(event) => this.handleOnChangeInput(event, 'email')}
-                                        className="form-control" id="inputEmail4" 
+                                        className="form-control" id="inputEmail4"
                                         disabled={this.state.action === CRUD_ACTION.EDIT ? true : false} />
                                 </div>
                                 <div className="col-md-3">
@@ -222,7 +236,7 @@ class UserRedux extends Component {
                                     <input type="password"
                                         value={password}
                                         onChange={(event) => this.handleOnChangeInput(event, 'password')}
-                                        className="form-control" id="inputPassword4" 
+                                        className="form-control" id="inputPassword4"
                                         disabled={this.state.action === CRUD_ACTION.EDIT ? true : false} />
                                 </div>
                                 <div className="col-md-3">
