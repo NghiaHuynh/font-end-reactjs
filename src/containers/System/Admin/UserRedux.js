@@ -147,7 +147,8 @@ class UserRedux extends Component {
                 phoneNumber: this.state.phoneNumber,
                 gender: this.state.gender,
                 position: this.state.position,
-                role: this.state.role
+                role: this.state.role,
+                image: this.state.image
             })
         }
 
