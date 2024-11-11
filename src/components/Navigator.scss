@@ -72,8 +72,9 @@
                 }
                 &.active {
                     a{
-                        color: orange;
+                        color: orange !important;
                     }
+                    background-color: #ededed;
                 }
                 &:hover {
                     background-color: darken($bg-menu-color, 3);

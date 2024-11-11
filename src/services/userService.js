@@ -24,11 +24,26 @@ const getAllCodeApi = (inputType) => {
     return axios.get(`/api/all-code?type=${inputType}`);
 }
 
+const getTopDoctorHomeApi = (inputLimit) => {
+    return axios.get(`/api/top-doctor-home?limit=${inputLimit}`);
+}
+
+const getAllDoctorsApi = () => {
+    return axios.get(`/api/get-all-doctors`);
+}
+
+const saveDetailDoctorApi = (data) => {
+    return axios.post('/api/save-info-doctor', data);
+}
+
 export default {
     handleLoginApi: handleLoginApi,
     getAllUsersApi: getAllUsersApi,
     createNewUserApi: createNewUserApi,
     deleteUserApi: deleteUserApi,
     editUserApi: editUserApi,
-    getAllCodeApi: getAllCodeApi
+    getAllCodeApi: getAllCodeApi,
+    getTopDoctorHomeApi: getTopDoctorHomeApi,
+    getAllDoctorsApi: getAllDoctorsApi,
+    saveDetailDoctorApi: saveDetailDoctorApi
 }

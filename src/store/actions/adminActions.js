@@ -124,7 +124,8 @@ export const fetchAllUsersStart = () => {
         try{
             dispatch({type: actionTypes.FETCH_ALL_USER_START});
             let res = await userService.getAllUsersApi('ALL');
-            // console.log('check get all user start:', res);
+            let data = await userService.getTopDoctorHomeApi(6);
+            console.log('check get all user start:', data);
             if(res && res.data.errCode === 0){
                 dispatch({
                     type: actionTypes.FETCH_ALL_USER_SUCCESS,
@@ -196,3 +197,78 @@ export const deleteUserStart = (inputId) => {
         }
     }    
 }
+
+
+export const fetchTopDoctorHomeStart = () => {
+    return async (dispatch, getState) => {
+        try{
+            dispatch({type: actionTypes.FETCH_TOP_DOCTOR_START});
+            let res = await userService.getTopDoctorHomeApi(6);
+            // console.log('check get top doctor start:', res);
+            if(res && res.data.errCode === 0){
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTOR_SUCCESS,
+                    arrDoctors: res.data.data
+                })
+            }else{
+                dispatch({
+                    type: actionTypes.FETCH_TOP_DOCTOR_FAIL,
+                })
+            }
+        }catch(error){
+            dispatch({
+                type: actionTypes.FETCH_TOP_DOCTOR_FAIL,
+            })
+        }
+    }    
+}
+
+export const fetchAllDoctorsStart = () => {
+    return async (dispatch, getState) => {
+        try{
+            dispatch({type: actionTypes.FETCH_ALL_DOCTOR_START});
+            let res = await userService.getAllDoctorsApi();
+            // console.log('check get all doctor start:', res);
+            if(res && res.data.errCode === 0){
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTOR_SUCCESS,
+                    arrDoctors: res.data.data
+                })
+            }else{
+                dispatch({
+                    type: actionTypes.FETCH_ALL_DOCTOR_FAIL,
+                })
+            }
+        }catch(error){
+            dispatch({
+                type: actionTypes.FETCH_ALL_DOCTOR_FAIL,
+            })
+        }
+    }    
+}
+
+export const saveDetailDoctorStart = (data) => {
+    return async (dispatch, getState) => {
+        try{
+            dispatch({type: actionTypes.SAVE_DETAIL_DOCTOR_START});
+            let res = await userService.saveDetailDoctorApi(data);
+            // console.log('check save detail doctor start:', res);
+            if(res && res.data.errCode === 0){
+                toast.success('Save detail doctor succeed!');
+                dispatch({
+                    type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
+                })
+            }else{
+                toast.error('Save detail doctor failed!');
+                dispatch({
+                    type: actionTypes.SAVE_DETAIL_DOCTOR_FAIL,
+                })
+            }
+        }catch(error){
+            toast.error('Save detail doctor failed!');
+            dispatch({
+                type: actionTypes.SAVE_DETAIL_DOCTOR_FAIL,
+            })
+        }
+    }    
+}   

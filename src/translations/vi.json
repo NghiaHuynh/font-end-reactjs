@@ -168,6 +168,13 @@
         "role": "Vai trò",
         "save": "Lưu User",
         "edit": "Lưu thay đổi",
+        "cancel": "Hủy thay đổi",
         "image": "Hình ảnh"
+    },
+    "home-page": {
+        "outstanding-doctor": "Bác sĩ nổi bật tuần qua",
+        "more-info": "Xem thêm",
+        "search": "Tìm kiếm"
     }
+
 }

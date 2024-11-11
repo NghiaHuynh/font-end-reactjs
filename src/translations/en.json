@@ -168,6 +168,12 @@
         "role": "Role",
         "save": "Save user",
         "edit": "Edit user",
+        "cancel": "Cancel",
         "image": "Avatar"
+    },
+    "home-page": {
+        "outstanding-doctor": "Outstanding doctor of the week",
+        "more-info": "More information",
+        "search": "Search"
     }
 }

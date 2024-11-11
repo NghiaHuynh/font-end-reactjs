@@ -51,21 +51,21 @@ class UserRedux extends Component {
         if (prevProps.genderRedux !== this.props.genderRedux) {
             this.setState({
                 genderArr: this.props.genderRedux,
-                gender: this.props.genderRedux && this.props.genderRedux.length > 0 ? this.props.genderRedux[0].key : ''
+                gender: this.props.genderRedux && this.props.genderRedux.length > 0 ? this.props.genderRedux[0].keyMap : ''
             })
         }
 
         if (prevProps.positionRedux !== this.props.positionRedux) {
             this.setState({
                 positionArr: this.props.positionRedux,
-                position: this.props.positionRedux && this.props.positionRedux.length > 0 ? this.props.positionRedux[0].key : ''
+                position: this.props.positionRedux && this.props.positionRedux.length > 0 ? this.props.positionRedux[0].keyMap : ''
             })
         }
 
         if (prevProps.roleRedux !== this.props.roleRedux) {
             this.setState({
                 roleArr: this.props.roleRedux,
-                role: this.props.roleRedux && this.props.roleRedux.length > 0 ? this.props.roleRedux[0].key : ''
+                role: this.props.roleRedux && this.props.roleRedux.length > 0 ? this.props.roleRedux[0].keyMap : ''
             })
         }
 
@@ -81,9 +81,9 @@ class UserRedux extends Component {
                 lastName: '',
                 phoneNumber: '',
                 address: '',
-                gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].key : '',
-                position: arrPosition && arrPosition.length > 0 ? arrPosition[0].key : '',
-                role: arrRole && arrRole.length > 0 ? arrRole[0].key : '',
+                gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : '',
+                position: arrPosition && arrPosition.length > 0 ? arrPosition[0].keyMap : '',
+                role: arrRole && arrRole.length > 0 ? arrRole[0].keyMap : '',
                 image: '',
 
                 previewImgURL: '',
@@ -184,7 +184,7 @@ class UserRedux extends Component {
         if (user.image) {
             const buffer = Buffer.from(user.image, 'base64');
             imgeBase64 = `${buffer.toString('binary')}`;
-            
+
             this.setState({
                 previewImgURL: imgeBase64
             })
@@ -198,10 +198,32 @@ class UserRedux extends Component {
             address: user.address,
             phoneNumber: user.phoneNumber,
             gender: user.gender,
-            position: user.position,
-            role: user.role,
+            position: user.positionId,
+            role: user.roleId,
             action: CRUD_ACTION.EDIT,
             userEditId: user.id
+        })
+    }
+
+    handleCancelEditUser = () => {
+        let arrGenders = this.props.genderRedux;
+        let arrPosition = this.props.positionRedux;
+        let arrRole = this.props.roleRedux;
+        
+        this.setState({
+            email: '',
+            password: '',
+            firstName: '',
+            lastName: '',
+            phoneNumber: '',
+            address: '',
+            gender: arrGenders && arrGenders.length > 0 ? arrGenders[0].keyMap : '',
+            position: arrPosition && arrPosition.length > 0 ? arrPosition[0].keyMap : '',
+            role: arrRole && arrRole.length > 0 ? arrRole[0].keyMap : '',
+            image: '',
+
+            previewImgURL: '',
+            action: CRUD_ACTION.CREATE
         })
     }
 
@@ -211,6 +233,7 @@ class UserRedux extends Component {
         let roleArr = this.state.roleArr;
         let { language, isLoadingGenderRedux } = this.props;
         let { email, password, firstName, lastName, phoneNumber, address, gender, position, role, image } = this.state;
+        // console.log('check state edit : ', this.state);
         return (
             <div className="user-redux-container">
                 <div className="title">
@@ -277,7 +300,7 @@ class UserRedux extends Component {
                                         {genderArr && genderArr.length > 0 &&
                                             genderArr.map((item, index) => {
                                                 return (
-                                                    <option key={index} value={item.key}>
+                                                    <option key={index} value={item.keyMap}>
                                                         {language === languages.VI ? item.valueVi : item.valueEn}
                                                     </option>
                                                 )
@@ -295,7 +318,7 @@ class UserRedux extends Component {
                                         {positionArr && positionArr.length > 0 &&
                                             positionArr.map((item, index) => {
                                                 return (
-                                                    <option key={index} value={item.key}>
+                                                    <option key={index} value={item.keyMap}>
                                                         {language === languages.VI ? item.valueVi : item.valueEn}
                                                     </option>
                                                 )
@@ -312,7 +335,7 @@ class UserRedux extends Component {
                                         {roleArr && roleArr.length > 0 &&
                                             roleArr.map((item, index) => {
                                                 return (
-                                                    <option key={index} value={item.key}>
+                                                    <option key={index} value={item.keyMap}>
                                                         {language === languages.VI ? item.valueVi : item.valueEn}
                                                     </option>
                                                 )
@@ -334,7 +357,7 @@ class UserRedux extends Component {
                                     </div>
 
                                 </div>
-                                <div className="col-12">
+                                <div className="col-auto">
                                     <button type="button"
                                         className={this.state.action === CRUD_ACTION.EDIT ? "btn-warning" : "btn-primary"}
                                         onClick={() => this.handleSaveNewUser()}>
@@ -343,7 +366,16 @@ class UserRedux extends Component {
                                             <FormattedMessage id="manage-user.save" />
                                         }
                                     </button>
+
+                                    {this.state.action === CRUD_ACTION.EDIT &&
+                                        <button type="button"
+                                            style={{ marginLeft: '10px' }}
+                                            className="btn-danger"
+                                            onClick={() => this.handleCancelEditUser()}>
+                                            <FormattedMessage id="manage-user.cancel" />
+                                        </button>}
                                 </div>
+
                             </form>
 
                             <div className="col-12 mt-5">
