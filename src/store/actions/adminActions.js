@@ -272,3 +272,27 @@ export const saveDetailDoctorStart = (data) => {
         }
     }    
 }   
+
+export const fetchDetailDoctorStart = (inputId) => {
+    return async (dispatch, getState) => {
+        try{
+            dispatch({type: actionTypes.GET_DETAIL_DOCTOR_START});
+            let res = await userService.getDetailDoctorApi(inputId);
+            // console.log('check get detail doctor start:', res);
+            if(res && res.data.errCode === 0){
+                dispatch({
+                    type: actionTypes.GET_DETAIL_DOCTOR_SUCCESS,
+                    detailDoctor: res.data.data
+                })
+            }else{
+                dispatch({
+                    type: actionTypes.GET_DETAIL_DOCTOR_FAIL,
+                })
+            }
+        }catch(error){
+            dispatch({
+                type: actionTypes.GET_DETAIL_DOCTOR_FAIL,
+            })            
+        }
+    }    
+}

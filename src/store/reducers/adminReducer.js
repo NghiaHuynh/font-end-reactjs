@@ -1,3 +1,4 @@
+import DetailDoctor from '../../containers/Patient/Doctor/DetailDoctor';
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
@@ -8,6 +9,7 @@ const initialState = {
     allUsers: [],
     topDoctors: [],
     allDoctors: [],
+    detailDoctorData: {}
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -97,6 +99,17 @@ const adminReducer = (state = initialState, action) => {
             }
         case actionTypes.FETCH_ALL_DOCTOR_FAIL:
             state.allDoctors = [];
+            return {
+                ...state
+            }
+        case actionTypes.GET_DETAIL_DOCTOR_SUCCESS:
+            state.detailDoctorData = action.detailDoctor;
+            console.log('check get detail doctor success:', state.detailDoctorData);
+            return {
+                ...state
+            }
+        case actionTypes.GET_DETAIL_DOCTOR_FAIL:
+            state.detailDoctorData = {};
             return {
                 ...state
             }

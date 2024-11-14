@@ -5,6 +5,7 @@ import * as actions from '../../../store/actions';
 import { languages } from '../../../utils';
 import { Buffer } from 'buffer';
 import { FormattedMessage } from 'react-intl';
+import { withRouter } from 'react-router';
 
 class OutStandingDoctor extends Component {
 
@@ -26,6 +27,12 @@ class OutStandingDoctor extends Component {
 
     componentDidMount() {
         this.props.loadTopDoctors();
+    }
+
+    handleDetailDoctor = (doctor) => {
+        console.log('doctor', doctor);
+
+        this.props.history.push(`/detail-doctor/${doctor.id}`);
     }
 
     render() {
@@ -54,9 +61,11 @@ class OutStandingDoctor extends Component {
                                 let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`;
                                 let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
                                 return (
-                                    <div className='section-customize'>
+                                    <div className='section-customize'
+                                        key={index}
+                                        onClick={() => this.handleDetailDoctor(item)}>
                                         <div className='customize-border'>
-                                            <div className='outer-bg' key={index}>
+                                            <div className='outer-bg' >
                                                 <div className='section-img section-outstanding-doctor' style={{ backgroundImage: `url(${imageBase64})` }}></div>
                                             </div>
                                             <div className='position text-center'>
@@ -67,18 +76,6 @@ class OutStandingDoctor extends Component {
                                     </div>
                                 )
                             })}
-
-                            {/* <div className='section-customize'>
-                                <div className='customize-border'>
-                                    <div className='outer-bg'>
-                                        <div className='section-img section-outstanding-doctor'></div>
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Giáo sư tiến sĩ</div>
-                                        <div>Chính xác</div>
-                                    </div>
-                                </div>
-                            </div> */}
                         </Slider>
                     </div>
 
@@ -103,4 +100,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OutStandingDoctor));
