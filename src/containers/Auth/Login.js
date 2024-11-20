@@ -31,26 +31,26 @@ class Login extends Component {
     }
 
     handleLogin = async () => {
-        let copyState = {...this.state};
+        let copyState = { ...this.state };
         copyState.errMessage = '';
         this.setState({
             ...copyState
         });
         await userService.handleLoginApi(this.state.username, this.state.password)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 copyState.errMessage = res.data.message;
                 this.setState({
                     ...copyState
                 });
-                if(res && res.data.errCode === 0){
+                if (res && res.data.errCode === 0) {
                     this.props.userLoginSuccess(res.data.user);
                 }
             })
             .catch(err => {
                 console.log(err);
-                if(err.response){
-                    if(err.response.data){
+                if (err.response) {
+                    if (err.response.data) {
                         copyState.errMessage = err.response.data.message;
                     }
                 }
@@ -61,7 +61,7 @@ class Login extends Component {
     }
 
     handleShowHidePassword = () => {
-        let copyState = {...this.state};
+        let copyState = { ...this.state };
         copyState.isShowPassword = !copyState.isShowPassword;//lay gia tri nguoc lai
         this.setState({
             ...copyState
@@ -90,7 +90,7 @@ class Login extends Component {
                             <label>Password</label>
                             <div className="eye-icon custom-eye-icon">
                                 <input type={this.state.isShowPassword ? 'text' : 'password'}
-                                 className="form-control" placeholder="Enter your password"
+                                    className="form-control" placeholder="Enter your password"
                                     value={this.state.password}
                                     onChange={(event) => this.handleOnChangeInput(event, 'password')} />
                                 <span className="eye-icon-input"
@@ -100,7 +100,7 @@ class Login extends Component {
                             </div>
                         </div>
                         <div className="col-12">
-                            <span style={{color: 'red'}}>{this.state.errMessage}</span>
+                            <span style={{ color: 'red' }}>{this.state.errMessage}</span>
                         </div>
                         <div className="col-12">
                             <button className="btn-login" onClick={() => this.handleLogin()}>Login</button>

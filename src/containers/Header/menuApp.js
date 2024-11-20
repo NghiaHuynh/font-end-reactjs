@@ -11,7 +11,10 @@ export const adminMenu = [
                 // ]
             },
             { name: 'menu.admin.manage-admin', link: '/system/user-admin' },
-            
+            { //quan ly ke hoach kham benh cua bac si
+                name: 'menu.doctor.manage-schedule', link: '/doctor/manage-schedule'
+            },
+
         ]
     },
     { //quan ly phong kham
@@ -32,4 +35,15 @@ export const adminMenu = [
             { name: 'menu.admin.manage-handbook', link: '/system/manage-handbook' },
         ]
     },
+];
+
+export const doctorMenu = [
+    {
+        name: 'menu.admin.manage-user', menus: [
+            { //quan ly ke hoach kham benh cua bac si
+                name: 'menu.doctor.manage-schedule', link: '/doctor/manage-schedule'
+            },
+        ]
+    }
+
 ];

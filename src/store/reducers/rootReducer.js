@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 
 import appReducer from "./appReducer";
@@ -8,9 +8,11 @@ import userReducer from "./userReducer";
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import storage from 'redux-persist/lib/storage';
 import { persistReducer } from 'redux-persist';
+import localforage from 'localforage';
 
+// localforage is a local storage config https://github.com/rt2zz/redux-persist/issues/870
 const persistCommonConfig = {
-    storage: storage,
+    storage: localforage,
     stateReconciler: autoMergeLevel2,
 };
 

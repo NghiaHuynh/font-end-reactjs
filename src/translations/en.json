@@ -2,15 +2,15 @@
     "homeheader": {
         "specialty": "Medical Specialty",
         "search-doctor": "Search Doctor By Specialty",
-        "health-facility":"Health Facility",
-        "select-hospital-room":"Select Hospital Room",
-        "doctor":"Doctor",
-        "select-doctor-clinic":"Select Doctor Clinic",
-        "fee":"Fee",
-        "check-health":"Check Health",
-        "support":"Support",
-        "about-us":"About Us",
-        "contact-us":"Contact Us",
+        "health-facility": "Health Facility",
+        "select-hospital-room": "Select Hospital Room",
+        "doctor": "Doctor",
+        "select-doctor-clinic": "Select Doctor Clinic",
+        "fee": "Fee",
+        "check-health": "Check Health",
+        "support": "Support",
+        "about-us": "About Us",
+        "contact-us": "Contact Us",
         "welcome": "Welcome"
     },
     "banner": {
@@ -75,6 +75,9 @@
             "manage-specialty": "Manage specialty",
             "handbook": "Handbook",
             "manage-handbook": "Manage handbook"
+        },
+        "doctor": {
+            "manage-schedule": "Manage doctor schedule"
         }
     },
     "system": {
@@ -175,5 +178,12 @@
         "outstanding-doctor": "Outstanding doctor of the week",
         "more-info": "More information",
         "search": "Search"
+    },
+    "manage-doctor": {
+        "add": "Add new doctor",
+        "edit": "Edit doctor",
+        "delete": "Delete doctor",
+        "save": "Save doctor",
+        "cancel": "Cancel Info"
     }
 }

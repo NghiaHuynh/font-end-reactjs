@@ -3,22 +3,39 @@
 
     .manage-doctor-editor {
         margin-top: 10px;
-        padding: 0 10px 0 10px;
+        padding   : 0 10px 0 10px;
     }
+
     .manage-doctor-title {
         text-align: center;
-        color: blue;
-        font-size: 30px;
-        margin: 10px 0 10px 0;
+        color     : blue;
+        font-size : 30px;
+        margin    : 10px 0 10px 0;
     }
+
     .save-content-doctor {
-        margin: 20px 10px;
+        margin       : 20px 10px;
         border-radius: 3px;
-        outline: none;
-        background: orange;
-        border: none;
-        cursor: pointer;
-        padding: 5px 10px;
+        outline      : none;
+        background   : orange;
+        border       : none;
+        cursor       : pointer;
+        padding      : 5px 10px;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .create-content-doctor {
+        margin       : 20px 10px;
+        border-radius: 3px;
+        outline      : none;
+        background   : blue;
+        border       : none;
+        cursor       : pointer;
+        padding      : 5px 10px;
+        color        : white;
 
         &:hover {
             opacity: 0.8;
@@ -28,14 +45,28 @@
     .more-infor {
         padding: 5px 10px;
         display: flex;
-        gap: 10px;
+        gap    : 10px;
 
         .content-left {
             width: 40%;
         }
+
         .content-right {
             width: 60%;
         }
     }
 
+
+
+}
+
+.detail-infor-doctor {
+
+    img {
+        width: 100%;
+    }
+}
+
+.comment-doctor {
+    height: 50px;
 }

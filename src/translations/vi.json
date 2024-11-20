@@ -2,15 +2,15 @@
     "homeheader": {
         "specialty": "Chuyên Khoa",
         "search-doctor": "Tìm bác sĩ theo chuyên khoa",
-        "health-facility":"Cơ sở y tế",
-        "select-hospital-room":"Chọn bệnh viện phòng khám",
-        "doctor":"Bác sĩ",
-        "select-doctor-clinic":"Chọn bác sĩ giỏi",
-        "fee":"Gói Khám",
-        "check-health":"Khám sức khỏe tổng quát",
-        "support":"Hỗ trợ",
-        "about-us":"Giới thiệu",
-        "contact-us":"Liên hệ",
+        "health-facility": "Cơ sở y tế",
+        "select-hospital-room": "Chọn bệnh viện phòng khám",
+        "doctor": "Bác sĩ",
+        "select-doctor-clinic": "Chọn bác sĩ giỏi",
+        "fee": "Gói Khám",
+        "check-health": "Khám sức khỏe tổng quát",
+        "support": "Hỗ trợ",
+        "about-us": "Giới thiệu",
+        "contact-us": "Liên hệ",
         "welcome": "Xin chào"
     },
     "banner": {
@@ -75,6 +75,9 @@
             "manage-specialty": "Quản lý chuyên khoa",
             "handbook": "Cẩm nang",
             "manage-handbook": "Quản lý cẩm nang"
+        },
+        "doctor": {
+            "manage-schedule": "Quản lý kế hoạch khám bệnh"
         }
     },
     "system": {
@@ -175,6 +178,12 @@
         "outstanding-doctor": "Bác sĩ nổi bật tuần qua",
         "more-info": "Xem thêm",
         "search": "Tìm kiếm"
+    },
+    "manage-doctor": {
+        "add": "Thêm Bác sĩ",
+        "edit": "Sửa Bác sĩ",
+        "delete": "Xóa Bác sĩ",
+        "save": "Lưu Bác sĩ",
+        "cancel": "Hủy thay đổi"
     }
-
 }
